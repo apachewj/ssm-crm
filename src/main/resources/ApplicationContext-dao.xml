@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 加载外部配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<!-- 连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		destroy-method="close" >
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="maxActive" value="10"></property>
+		<!--<property name="maxIdle" value="5"></property>-->
+	</bean>
+
+	<!-- c3p0连接池 -->
+	<bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		  destroy-method="close" >
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="minPoolSize" value="2"></property>
+		<property name="maxPoolSize" value="10"></property>
+	</bean>
+
+	<!-- Mapper -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2"></property>
+		<property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml"></property>
+		<!--mapper文件与接口不在一个目录时，需要配置mapper位置-->
+		<property name="mapperLocations" value="classpath*:com/ssm/*/mapper/**/*.xml" />
+<!-- 		<property name="mapperLocations"> -->
+<!-- 			<array> -->
+<!-- 				<value>classpath:*.xml</value> -->
+<!-- 			</array> -->
+<!-- 		</property> -->
+	</bean>
+	
+	<!-- Mapper扫描，扫描接口，默认根据接口名称去相同路径找mapper文件 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.ssm.*.dao"></property>
+	</bean>
+
+</beans>
