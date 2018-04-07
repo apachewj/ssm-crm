@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="crmweb" />
+        <module name="crm-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="crmweb" target="1.8" />
+      <module name="crm-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
