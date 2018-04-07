@@ -51,9 +51,9 @@
     </bean>
 
     <!--放行静态资源，前提dispatcherServlet包含这些请求-->
-    <mvc:resources location="/WEB-INF/static/js/" mapping="/js/**"/>
-    <mvc:resources location="/WEB-INF/static/fonts/" mapping="/fonts/**"/>
-    <mvc:resources location="/WEB-INF/static/css/" mapping="/css/**"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/static/js/"/>
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/static/fonts/"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/static/css/"/>
 
     <!--<mvc:resources location="/WEB-INF/views/" mapping="*.jsp"/>-->
     <!-- 一次配置所有，但不建议映射到根目录 -->

@@ -21,10 +21,28 @@ web.xml 3.0
 运行插件配置了tomcat和jetty
 
 测试URL
-http://localhost:8080/customer/list
+
+`http://localhost:8080/customer/list`
+
+PageHelper实现分页
+
+`http://localhost:8080/customer/list2`
+
+可选查询参数
+`custSource=&custIndustry=&custName=&custLevel=&page=1&rows=10`
+```
+page当前页
+rows每页条数，目前不起作用
+size每页条数
+```
+
+
 
 #数据库连接
 ## 关于数据库连接遇到的问题
+```
 mysql-connector-java使用了高版本6.0.6结果遇到如下问题
 c3p0需要加入这个参数serverTimezone=UTC
 druid需要在上面的基础上再修改驱动jdbc.driver=com.mysql.cj.jdbc.Driver
+```
+
