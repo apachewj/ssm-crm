@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 		
 	@Autowired
-	private DictMapper dictMapper;
+	private DictMapper dictMapper; //接口与映射文件不在一个目录时，这里经常报红，不不影响运行
 	
 	@Autowired
 	private CustomerMapper customerMapper;
@@ -32,6 +32,11 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<Customer> findCustomerByVo(QueryVo queryVo) {
 		return customerMapper.findCustomerByVo(queryVo);
+	}
+
+	@Override
+	public List<Customer> findCustomerByPage(QueryVo vo) {
+		return customerMapper.findCustomerByPage(vo);
 	}
 
 	@Override

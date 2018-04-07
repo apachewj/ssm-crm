@@ -19,7 +19,13 @@ public interface CustomerMapper {
 	 * @return
 	 */
 	public List<Customer> findCustomerByVo(QueryVo queryVo);
-	
+	/**
+	 * 测试PageHelper分页条件查询
+	 * @param queryVo
+	 * @return
+	 */
+	public List<Customer> findCustomerByPage(QueryVo queryVo);
+
 	/**
 	 * 根据id查询客户信息
 	 */

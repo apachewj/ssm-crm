@@ -44,6 +44,12 @@
 <!-- 				<value>classpath:*.xml</value> -->
 <!-- 			</array> -->
 <!-- 		</property> -->
+		<!--这样配置分页插件不成功，原因未知-->
+		<!--<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor"/>
+			</array>
+		</property>-->
 	</bean>
 	
 	<!-- Mapper扫描，扫描接口，默认根据接口名称去相同路径找mapper文件 -->

@@ -22,7 +22,13 @@ public interface CustomerService {
 	 * @return
 	 */
 	public List<Customer> findCustomerByVo(QueryVo queryVo);
-	
+
+	/**
+	 *  通过PageHelper实现分页
+	 * @param vo
+	 */
+	public List<Customer> findCustomerByPage(QueryVo vo);
+
 	/**
 	 * 根据id查询客户信息
 	 */
@@ -39,4 +45,5 @@ public interface CustomerService {
 	 * @param id
 	 */
 	public void deleteCustomer(Long id);
+
 }

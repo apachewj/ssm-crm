@@ -42,6 +42,23 @@
 		<include refid="customer_where"/>
 		limit #{start}, #{size}
 	</select>
+
+	<!--测试PageHelper分页-->
+	<select id="findCustomerByPage" parameterType="com.ssm.crm.pojo.QueryVo" resultType="com.ssm.crm.pojo.Customer">
+
+		select c.cust_id, c.cust_name, c.cust_user_id, c.cust_create_id,
+		s.dict_item_name cust_source,
+		i.dict_item_name cust_industry,
+		l.dict_item_name cust_level,
+		c.cust_linkman, c.cust_phone, c.cust_mobile, c.cust_zipcode, c.cust_address, c.cust_createtime
+		from customer c
+		left outer join base_dict s on s.dict_id = c.cust_source
+		left outer join base_dict i on i.dict_id = c.cust_industry
+		left outer join base_dict l on l.dict_id = c.cust_level
+
+		<include refid="customer_where"/>
+
+	</select>
 	
 	<select id="findCustomerById" parameterType="long" resultType="com.ssm.crm.pojo.Customer">
 		select * from customer where cust_id=#{id}
