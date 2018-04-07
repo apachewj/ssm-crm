@@ -1,8 +1,11 @@
 package com.ssm.crm.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Customer {
+public class Customer implements Serializable{
 
 	private Long cust_id;
 	private String cust_name;
@@ -16,6 +19,7 @@ public class Customer {
 	private String cust_mobile;
 	private String cust_zipcode;
 	private String cust_address;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", locale = "zh", timezone = "GMT+8")
 	private Date cust_createtime;
 
 
