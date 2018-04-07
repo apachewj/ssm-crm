@@ -1,6 +1,8 @@
 package com.ssm.crm.pojo;
 
-public class QueryVo {
+import java.io.Serializable;
+
+public class QueryVo implements Serializable{
 
 	private String custName;
 	private String custSource;
